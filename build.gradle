@@ -1,6 +1,7 @@
 plugins {
     id 'java'
-    id 'org.springframework.boot' version '4.0.1'
+    id 'org.springframework.boot' version '3.3.3'
+
     id 'io.spring.dependency-management' version '1.1.7'
 }
 
@@ -19,8 +20,16 @@ repositories {
 }
 
 dependencies {
+    // Spring Boot Core
     implementation 'org.springframework.boot:spring-boot-starter'
-    implementation("com.sun.mail:jakarta.mail:2.0.1")
+
+    // REST API və @GetMapping üçün
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+
+    // Mail parsing üçün
+    implementation "com.sun.mail:jakarta.mail:2.0.1"
+
+    // Test üçün
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 }
