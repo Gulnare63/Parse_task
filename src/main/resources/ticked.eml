@@ -1,0 +1,591 @@
+Received: from postback28a.mail.yandex.net (postback28a.mail.yandex.net [2a02:6b8:c0e:500:1:45:d181:da28])
+	by ybm3av53fgn2hevt.vla.yp-c.yandex.net (notsolitesrv/Yandex) with LMTPS id zOrZDG0YCvil-OsuGp7i6
+	for <aykhann@crocusoft.com>; Mon, 05 Jan 2026 15:28:23 +0300
+Received: from mail-nwsmtp-mxfront-production-main-61.iva.yp-c.yandex.net (mail-nwsmtp-mxfront-production-main-61.iva.yp-c.yandex.net [IPv6:2a02:6b8:c0c:172c:0:640:d899:0])
+	by postback28a.mail.yandex.net (Yandex) with ESMTPS id 7BABAC00FC
+	for <aykhann@crocusoft.com>; Mon, 05 Jan 2026 15:28:23 +0300 (MSK)
+Received: from osplwbeout01-07.prod.phx3.secureserver.net (osplwbeout01-07.prod.phx3.secureserver.net [173.201.192.53])
+	by mail-nwsmtp-mxfront-production-main-61.iva.yp-c.yandex.net (mxfront/Yandex) with ESMTPS id JSntoeh9OiE0-lc9iBZnp;
+	Mon, 05 Jan 2026 15:28:21 +0300
+X-Yandex-Fwd: 1
+Authentication-Results: mail-nwsmtp-mxfront-production-main-61.iva.yp-c.yandex.net; spf=pass (mail-nwsmtp-mxfront-production-main-61.iva.yp-c.yandex.net: domain of uniqstudio.co designates 173.201.192.53 as permitted sender, rule=[ip4:173.201.192.0/23]) smtp.mail=hello@uniqstudio.co; dkim=pass header.i=@uniqstudio.co
+X-Yandex-Spam: 4
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=secureserver.net;
+	s=secureserver1; t=1767616099;
+	bh=+IcVm2WRkcsUNVeMtZ51xUPdqPB1mM+VhKTdA4OIDaQ=;
+	h=Date:From:To:References:Subject;
+	b=hxzdP8x7OhMPAxHVzN5mB44en60blkmAuKh+rGrq1g9zHWQr4wB3CQGxVBam3nvKO
+	 Axo3Uu2YyXWfwZQtdHXaU+2onNLwblW9K+fp9JF0Xmh64l0P1oslVhvPkv2XWE4DA+
+	 CaGjMgI1/WrOUhMlhftqF1XDbnrkGs7WkkIEv6At2zKWRXo1mmRdzlDIPduPUN1sHn
+	 rAh6fZBjqhfhAHWJBbUXI8J7C/5wSTCXKVE/jsUaa/nAAaWJ2ZPSJ3VPxVBmv8WphS
+	 vyEZ90gxtqu13ab4nxfJBOKfxxk9MTyYQZ8ZJ62v6TzoHs+++pJSPw3w4vs1PyV2js
+	 RfKsH4pVhzsKA==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=uniqstudio.co;
+	s=secureserver1; t=1767616099;
+	bh=+IcVm2WRkcsUNVeMtZ51xUPdqPB1mM+VhKTdA4OIDaQ=;
+	h=Date:From:To:References:Subject;
+	b=E2rW/yJtOmmDM/GIj6gt5fLPrgCs6UBBq2qBLcPrEW87unf7+HKOScuXVwLUYjOXR
+	 dvViXqgrK0vsXn7dq4qfDodnD0UcUrqOfoVH/SaADr2a1am9mB+1zsu0xCjJ44AK1v
+	 wFZVgCcBu9bw/ucI7mZQsLEQ2IT1TOzqfvoXAA5gsYqi5k5bSHzRlD2LjPb//qqsMM
+	 uxkxNPzrq9dVeBrqBaOVbbfSKKx9aFO1OxGCN0HeDB5yC/w7gBqTAACE2kf4YS8mYr
+	 GAFIqbljdmDfz+Y24r7b6QuuYKSWBJWFqDEeUIKlSUP/ODb3mocSe7cYZaju1/Y+es
+	 kR7lxdtnW4uPw==
+Feedback-ID: 318f68f5b30e805b087fae3a52ecc5c5:uniqstudio.co:ssnet
+X-CMAE-Analysis: v=2.4 cv=Uen7jqSN c=1 sm=1 tr=0 ts=695bae63
+ a=OEr99OIwWTgk29Xyw0yjAA==:117 a=OEr99OIwWTgk29Xyw0yjAA==:17
+ a=YMWh5eTGr1MA:10 a=MKtGQD3n3ToA:10 a=1oJP67jkp3AA:10 a=mTLUI6cdAAAA:8
+ a=xchs2q0uAAAA:8 a=4NGOWcIHAAAA:8 a=UKwhmc9aE6i-olVA6PEA:9
+ a=g96wli5fyUVKf3TW:21 a=QEXdDO2ut3YA:10 a=Z_60_2tg-voYcxSmnYWO:22
+ a=NMTTAJ3csu0gydASit-0:22 a=eI6wgW0AE8MoGAI007yN:22 a=7L5ZWIeKg-SJMl_JGyDz:22
+ a=NWVoK91CQySWRX1oVYDe:22
+X-SECURESERVER-ACCT: hello@uniqstudio.co
+X-SID: cjdQvcXiHcrZI
+Date: Mon, 5 Jan 2026 12:28:19 +0000 (GMT)
+From: Rufat Karimov <hello@uniqstudio.co>
+To: <aykhann@crocusoft.com>
+Message-ID: <198998004407406592.0.v2@titan.email>
+References: <197988515269238784.0.v2@titan.email>
+ <198997697567854592.0.v2@titan.email> <198997966240288768.0.v2@titan.email>
+ <198998004407406592.0.v2@titan.email>
+Subject: Fwd:  >>: MAMMADOV/SAHIB 01FEB GYD TBS
+MIME-Version: 1.0
+Content-Type: multipart/related; 
+	boundary="----=_Part_7524647_1854963640.1767616098947"
+X-Titan-User: hello@uniqstudio.co
+X-Originating-IP: 5.191.116.246
+X-CMAE-Envelope: MS4xfIqyGod+XqV5VrtaIXsvbiPgk0lYJH9w69BLrHnmvVdcfaLC//PY5yieslYc/e/JCO++vGf8hlkLMVb88saYHTEPhOH/SDtia4G7eJXhnbV575KH9p56
+ q5MV40pz4ipAWBIhQSeoRMIiLRjTn7rAUXSweI0EsWZc8ce2V9Iv/HrMUDdbJz35B/Fn2/ZYRzCEjrVfsL+JH484+5f38dFtlZk=
+Return-Path: hello@uniqstudio.co
+X-Yandex-Forward: 2c08774f60f2ec46eb0dcaca166137fe
+
+------=_Part_7524647_1854963640.1767616098947
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+Content-Disposition: inline
+
+<br><br><br>
+<br>
+<div class=3D"gmail_quote">
+---------- Forwarded message ---------
+  <br>
+  <br>
+  From: hello@uniqstudio.co
+  <br>
+  Subject: Fwd:  &gt;&gt;: MAMMADOV/SAHIB 01FEB GYD TBS<br>
+  Date: 5 Jan 2026 at 16:23
+  <br>
+  To: zeynabm@crocusoft.com &lt;zeynabm@crocusoft.com&gt;<br>
+ =20
+  <br><br><br><br>
+<br>
+<div class=3D"gmail_quote">
+---------- Forwarded message ---------
+  <br>
+  <br>
+  From: hello@uniqstudio.co
+  <br>
+  Subject: Fwd:  &gt;&gt;: MAMMADOV/SAHIB 01FEB GYD TBS<br>
+  Date: 25 Dec 2025 at 13:02
+  <br>
+  To: zeynabm@crocusoft.com &lt;zeynabm@crocusoft.com&gt;<br>
+ =20
+  <br><div fr-original-style=3D"" style=3D"user-select: inherit; scrollbar-=
+color: var(--scrollbar-active-color) #0000; box-sizing: border-box;"><br fr=
+-original-style=3D"" style=3D"user-select: inherit; scrollbar-color: var(--=
+scrollbar-active-color) #0000; box-sizing: border-box;"></div><img class=3D=
+"flm-open" width=3D"0" height=3D"0" style=3D"border:0;width:0;height:0;" sr=
+c=3D"https://gateway-east.rootserverlink.com/dc/t/mo/v2?t=3DeyJ0eXAiOiJKV1Q=
+iLCJhbGciOiJIUzUxMiJ9.eyJwIjoiMTAwMyA3OTk1NDUzIGF5a2hhbm5AY3JvY3Vzb2Z0LmNvb=
+SA5MDBlZWQyNzM2OGFhYTk4YzhhZWZiZTU4OWJjOWNiZCA0MjQyMTQwODU4MjgyODAzNCAxID8i=
+LCJleHAiOjE3ODMxNjgwOTh9.l1hPMwehup-d8vriLStlG6eyVMjSRUn8Dx7Ih_KuSnS5tqahf6=
+WK4lgWlmxKhj8fHjIKfULkHoHyl0_kG4tbbg&requestId=3Di_05122805_SMR_222_132_MzO=
+R"><div fr-original-style=3D"" style=3D"user-select: inherit; scrollbar-col=
+or: var(--scrollbar-active-color) #0000; box-sizing: border-box;" fr-origin=
+al-class=3D"gmail_quote"><div style=3D"display: block; user-select: inherit=
+; scrollbar-color: var(--scrollbar-active-color) #0000; box-sizing: border-=
+box;" fr-original-style=3D"display:block"><div style=3D"display: block; use=
+r-select: inherit; scrollbar-color: var(--scrollbar-active-color) #0000; bo=
+x-sizing: border-box;" fr-original-style=3D"display:block"><div style=3D"di=
+splay: block; user-select: inherit; scrollbar-color: var(--scrollbar-active=
+-color) #0000; box-sizing: border-box;" fr-original-style=3D"display:block"=
+><div style=3D"display: block; user-select: inherit; scrollbar-color: var(-=
+-scrollbar-active-color) #0000; box-sizing: border-box;" fr-original-style=
+=3D"display:block"><p style=3D"display: block; margin-inline: 0px; user-sel=
+ect: inherit; scrollbar-color: var(--scrollbar-active-color) #0000; box-siz=
+ing: border-box;" fr-original-style=3D"display:block;-webkit-margin-before:=
+1__qem;-webkit-margin-after:1__qem;-webkit-margin-start:0;-webkit-margin-en=
+d:0;" fr-original-class=3D"MsoNormal"><br fr-original-style=3D"" style=3D"u=
+ser-select: inherit; scrollbar-color: var(--scrollbar-active-color) #0000; =
+box-sizing: border-box;"></p></div></div></div></div><div style=3D"display:=
+ block; user-select: inherit; scrollbar-color: var(--scrollbar-active-color=
+) #0000; box-sizing: border-box;" fr-original-style=3D"display:block"><div =
+style=3D"display: block; user-select: inherit; scrollbar-color: var(--scrol=
+lbar-active-color) #0000; box-sizing: border-box;" fr-original-style=3D"dis=
+play:block"><br fr-original-style=3D"" style=3D"user-select: inherit; scrol=
+lbar-color: var(--scrollbar-active-color) #0000; box-sizing: border-box;"><=
+/div><p style=3D"display: block; user-select: inherit; scrollbar-color: var=
+(--scrollbar-active-color) #0000; box-sizing: border-box; margin-inline: 0p=
+x; margin-bottom: 12pt;" fr-original-style=3D"display:block;-webkit-margin-=
+before:1__qem;-webkit-margin-after:1__qem;-webkit-margin-start:0;-webkit-ma=
+rgin-end:0;margin-bottom:12.0pt;" fr-original-class=3D"MsoNormal">&nbsp;</p=
+><div style=3D"display: block; user-select: inherit; scrollbar-color: var(-=
+-scrollbar-active-color) #0000; box-sizing: border-box;" fr-original-style=
+=3D"display:block"><p align=3D"center" style=3D"display: block; margin-inli=
+ne: 0px; text-align: center; user-select: inherit; scrollbar-color: var(--s=
+crollbar-active-color) #0000; box-sizing: border-box;" fr-original-style=3D=
+"display:block;-webkit-margin-before:1__qem;-webkit-margin-after:1__qem;-we=
+bkit-margin-start:0;-webkit-margin-end:0;text-align:center;"><b style=3D"fo=
+nt-weight: bold; user-select: inherit; scrollbar-color: var(--scrollbar-act=
+ive-color) #0000; box-sizing: border-box;" fr-original-style=3D"font-weight=
+:bold;"><span style=3D"font-size: 18pt; font-family: Arial, sans-serif; col=
+or: blue; user-select: inherit; scrollbar-color: var(--scrollbar-active-col=
+or) #0000; box-sizing: border-box;" fr-original-style=3D"font-size:18.0pt;f=
+ont-family:&quot;Arial&quot;,sans-serif;color:blue;">MAMMADOV/SAHIB 01FEB G=
+YD TBS</span></b></p><pre style=3D"display: block; font-family: monospace; =
+white-space: pre; user-select: inherit; scrollbar-color: var(--scrollbar-ac=
+tive-color) #0000; font-size: 1em; overflow-wrap: break-word; overflow: vis=
+ible; box-sizing: border-box;" fr-original-style=3D"display:block;font-fami=
+ly:monospace;white-space:pre;margin:1__qem 0;">This document is automatical=
+ly generated.</pre><pre style=3D"display: block; font-family: monospace; wh=
+ite-space: pre; user-select: inherit; scrollbar-color: var(--scrollbar-acti=
+ve-color) #0000; font-size: 1em; overflow-wrap: break-word; overflow: visib=
+le; box-sizing: border-box;" fr-original-style=3D"display:block;font-family=
+:monospace;white-space:pre;margin:1__qem 0;">&nbsp;</pre><pre style=3D"disp=
+lay: block; font-family: monospace; white-space: pre; user-select: inherit;=
+ scrollbar-color: var(--scrollbar-active-color) #0000; font-size: 1em; over=
+flow-wrap: break-word; overflow: visible; box-sizing: border-box;" fr-origi=
+nal-style=3D"display:block;font-family:monospace;white-space:pre;margin:1__=
+qem 0;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&=
+nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbs=
+p;&nbsp;&nbsp;&nbsp; ELECTRONIC TICKET</pre><pre style=3D"display: block; f=
+ont-family: monospace; white-space: pre; user-select: inherit; scrollbar-co=
+lor: var(--scrollbar-active-color) #0000; font-size: 1em; overflow-wrap: br=
+eak-word; overflow: visible; box-sizing: border-box;" fr-original-style=3D"=
+display:block;font-family:monospace;white-space:pre;margin:1__qem 0;">&nbsp=
+;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&n=
+bsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; PASSENGER ITINERARY RE=
+CEIPT</pre><pre style=3D"display: block; font-family: monospace; white-spac=
+e: pre; user-select: inherit; scrollbar-color: var(--scrollbar-active-color=
+) #0000; font-size: 1em; overflow-wrap: break-word; overflow: visible; box-=
+sizing: border-box;" fr-original-style=3D"display:block;font-family:monospa=
+ce;white-space:pre;margin:1__qem 0;">&nbsp;</pre><pre style=3D"display: blo=
+ck; font-family: monospace; white-space: pre; user-select: inherit; scrollb=
+ar-color: var(--scrollbar-active-color) #0000; font-size: 1em; overflow-wra=
+p: break-word; overflow: visible; box-sizing: border-box;" fr-original-styl=
+e=3D"display:block;font-family:monospace;white-space:pre;margin:1__qem 0;">=
+AVIADESK M MMC&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&=
+nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; DATE: 24 =
+DEC 2025</pre><pre style=3D"display: block; font-family: monospace; white-s=
+pace: pre; user-select: inherit; scrollbar-color: var(--scrollbar-active-co=
+lor) #0000; font-size: 1em; overflow-wrap: break-word; overflow: visible; b=
+ox-sizing: border-box;" fr-original-style=3D"display:block;font-family:mono=
+space;white-space:pre;margin:1__qem 0;">169 A, MOHSUN SANANI STR;&nbsp;&nbs=
+p;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; AGENT: 1010</pre><pre style=3D=
+"display: block; font-family: monospace; white-space: pre; user-select: inh=
+erit; scrollbar-color: var(--scrollbar-active-color) #0000; font-size: 1em;=
+ overflow-wrap: break-word; overflow: visible; box-sizing: border-box;" fr-=
+original-style=3D"display:block;font-family:monospace;white-space:pre;margi=
+n:1__qem 0;">NARIMANOV DISTRICT&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&n=
+bsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; NAME: MAMMADOV/S=
+AHIB MR</pre><pre style=3D"display: block; font-family: monospace; white-sp=
+ace: pre; user-select: inherit; scrollbar-color: var(--scrollbar-active-col=
+or) #0000; font-size: 1em; overflow-wrap: break-word; overflow: visible; bo=
+x-sizing: border-box;" fr-original-style=3D"display:block;font-family:monos=
+pace;white-space:pre;margin:1__qem 0;">AZ0007</pre><pre style=3D"display: b=
+lock; font-family: monospace; white-space: pre; user-select: inherit; scrol=
+lbar-color: var(--scrollbar-active-color) #0000; font-size: 1em; overflow-w=
+rap: break-word; overflow: visible; box-sizing: border-box;" fr-original-st=
+yle=3D"display:block;font-family:monospace;white-space:pre;margin:1__qem 0;=
+">IATA&nbsp;&nbsp;&nbsp;&nbsp; : 077 17931</pre><pre style=3D"display: bloc=
+k; font-family: monospace; white-space: pre; user-select: inherit; scrollba=
+r-color: var(--scrollbar-active-color) #0000; font-size: 1em; overflow-wrap=
+: break-word; overflow: visible; box-sizing: border-box;" fr-original-style=
+=3D"display:block;font-family:monospace;white-space:pre;margin:1__qem 0;">T=
+ELEPHONE: 994124609090</pre><pre style=3D"display: block; font-family: mono=
+space; white-space: pre; user-select: inherit; scrollbar-color: var(--scrol=
+lbar-active-color) #0000; font-size: 1em; overflow-wrap: break-word; overfl=
+ow: visible; box-sizing: border-box;" fr-original-style=3D"display:block;fo=
+nt-family:monospace;white-space:pre;margin:1__qem 0;">&nbsp;</pre><pre styl=
+e=3D"display: block; font-family: monospace; white-space: pre; user-select:=
+ inherit; scrollbar-color: var(--scrollbar-active-color) #0000; font-size: =
+1em; overflow-wrap: break-word; overflow: visible; box-sizing: border-box;"=
+ fr-original-style=3D"display:block;font-family:monospace;white-space:pre;m=
+argin:1__qem 0;">ISSUING AIRLINE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&=
+nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbs=
+p;&nbsp;&nbsp;&nbsp;&nbsp; : AZERBAIJAN AIRLINES</pre><pre style=3D"display=
+: block; font-family: monospace; white-space: pre; user-select: inherit; sc=
+rollbar-color: var(--scrollbar-active-color) #0000; font-size: 1em; overflo=
+w-wrap: break-word; overflow: visible; box-sizing: border-box;" fr-original=
+-style=3D"display:block;font-family:monospace;white-space:pre;margin:1__qem=
+ 0;">TICKET NUMBER&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nb=
+sp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=
+&nbsp;&nbsp;&nbsp;&nbsp; : ETKT 771 2438948747</pre><pre style=3D"display: =
+block; font-family: monospace; white-space: pre; user-select: inherit; scro=
+llbar-color: var(--scrollbar-active-color) #0000; font-size: 1em; overflow-=
+wrap: break-word; overflow: visible; box-sizing: border-box;" fr-original-s=
+tyle=3D"display:block;font-family:monospace;white-space:pre;margin:1__qem 0=
+;">&nbsp;</pre><pre style=3D"display: block; font-family: monospace; white-=
+space: pre; user-select: inherit; scrollbar-color: var(--scrollbar-active-c=
+olor) #0000; font-size: 1em; overflow-wrap: break-word; overflow: visible; =
+box-sizing: border-box;" fr-original-style=3D"display:block;font-family:mon=
+ospace;white-space:pre;margin:1__qem 0;">BOOKING REF : AMADEUS: XQ4JXL, AIR=
+LINE: 1A/XQ4JXL</pre><pre style=3D"display: block; font-family: monospace; =
+white-space: pre; user-select: inherit; scrollbar-color: var(--scrollbar-ac=
+tive-color) #0000; font-size: 1em; overflow-wrap: break-word; overflow: vis=
+ible; box-sizing: border-box;" fr-original-style=3D"display:block;font-fami=
+ly:monospace;white-space:pre;margin:1__qem 0;">BOOKING REF : AMADEUS: XQ4JX=
+L, AIRLINE: J2/XQ4JXL</pre><pre style=3D"display: block; font-family: monos=
+pace; white-space: pre; user-select: inherit; scrollbar-color: var(--scroll=
+bar-active-color) #0000; font-size: 1em; overflow-wrap: break-word; overflo=
+w: visible; box-sizing: border-box;" fr-original-style=3D"display:block;fon=
+t-family:monospace;white-space:pre;margin:1__qem 0;">&nbsp;</pre><pre style=
+=3D"display: block; font-family: monospace; white-space: pre; user-select: =
+inherit; scrollbar-color: var(--scrollbar-active-color) #0000; font-size: 1=
+em; overflow-wrap: break-word; overflow: visible; box-sizing: border-box;" =
+fr-original-style=3D"display:block;font-family:monospace;white-space:pre;ma=
+rgin:1__qem 0;">FROM /TO&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;FLIGHT&n=
+bsp; CL DATE&nbsp; DEP&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; FARE BASIS&nbsp;&nbsp;=
+&nbsp; NVB&nbsp;&nbsp; NVA&nbsp;&nbsp; BAG ST</pre><pre style=3D"display: b=
+lock; font-family: monospace; white-space: pre; user-select: inherit; scrol=
+lbar-color: var(--scrollbar-active-color) #0000; font-size: 1em; overflow-w=
+rap: break-word; overflow: visible; box-sizing: border-box;" fr-original-st=
+yle=3D"display:block;font-family:monospace;white-space:pre;margin:1__qem 0;=
+">&nbsp;</pre><pre style=3D"display: block; font-family: monospace; white-s=
+pace: pre; user-select: inherit; scrollbar-color: var(--scrollbar-active-co=
+lor) #0000; font-size: 1em; overflow-wrap: break-word; overflow: visible; b=
+ox-sizing: border-box;" fr-original-style=3D"display:block;font-family:mono=
+space;white-space:pre;margin:1__qem 0;">BAKU HEYDAR ALI J2 8223 X&nbsp; 01F=
+EB 0925&nbsp;&nbsp;&nbsp;&nbsp; XK0R1ADA&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 01FE=
+B 01FEB 0PC OK</pre><pre style=3D"display: block; font-family: monospace; w=
+hite-space: pre; user-select: inherit; scrollbar-color: var(--scrollbar-act=
+ive-color) #0000; font-size: 1em; overflow-wrap: break-word; overflow: visi=
+ble; box-sizing: border-box;" fr-original-style=3D"display:block;font-famil=
+y:monospace;white-space:pre;margin:1__qem 0;">TERMINAL:1&nbsp;&nbsp;&nbsp;&=
+nbsp;&nbsp;&nbsp;&nbsp;&nbsp; FLIGHT OPERATED BY:&nbsp;&nbsp; AZERBAIJAN AI=
+RLINES</pre><pre style=3D"display: block; font-family: monospace; white-spa=
+ce: pre; user-select: inherit; scrollbar-color: var(--scrollbar-active-colo=
+r) #0000; font-size: 1em; overflow-wrap: break-word; overflow: visible; box=
+-sizing: border-box;" fr-original-style=3D"display:block;font-family:monosp=
+ace;white-space:pre;margin:1__qem 0;">TBILISI INTERNA&nbsp;&nbsp;&nbsp;&nbs=
+p;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&=
+nbsp; ARRIVAL TIME: 1035&nbsp;&nbsp;&nbsp;&nbsp; ARRIVAL DATE: 01FEB</pre><=
+pre style=3D"display: block; font-family: monospace; white-space: pre; user=
+-select: inherit; scrollbar-color: var(--scrollbar-active-color) #0000; fon=
+t-size: 1em; overflow-wrap: break-word; overflow: visible; box-sizing: bord=
+er-box;" fr-original-style=3D"display:block;font-family:monospace;white-spa=
+ce:pre;margin:1__qem 0;">&nbsp;</pre><pre style=3D"display: block; font-fam=
+ily: monospace; white-space: pre; user-select: inherit; scrollbar-color: va=
+r(--scrollbar-active-color) #0000; font-size: 1em; overflow-wrap: break-wor=
+d; overflow: visible; box-sizing: border-box;" fr-original-style=3D"display=
+:block;font-family:monospace;white-space:pre;margin:1__qem 0;">TBILISI INTE=
+RNA J2 8226 N&nbsp; 07FEB 2300&nbsp;&nbsp;&nbsp;&nbsp; NK0R1ADA&nbsp;&nbsp;=
+&nbsp;&nbsp;&nbsp; 07FEB 07FEB 0PC OK</pre><pre style=3D"display: block; fo=
+nt-family: monospace; white-space: pre; user-select: inherit; scrollbar-col=
+or: var(--scrollbar-active-color) #0000; font-size: 1em; overflow-wrap: bre=
+ak-word; overflow: visible; box-sizing: border-box;" fr-original-style=3D"d=
+isplay:block;font-family:monospace;white-space:pre;margin:1__qem 0;">&nbsp;=
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nb=
+sp;&nbsp;&nbsp;&nbsp;&nbsp; FLIGHT OPERATED BY:&nbsp;&nbsp; AZERBAIJAN AIRL=
+INES</pre><pre style=3D"display: block; font-family: monospace; white-space=
+: pre; user-select: inherit; scrollbar-color: var(--scrollbar-active-color)=
+ #0000; font-size: 1em; overflow-wrap: break-word; overflow: visible; box-s=
+izing: border-box;" fr-original-style=3D"display:block;font-family:monospac=
+e;white-space:pre;margin:1__qem 0;">BAKU HEYDAR ALI&nbsp;&nbsp;&nbsp;&nbsp;=
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nb=
+sp; ARRIVAL TIME: 0010&nbsp;&nbsp;&nbsp;&nbsp; ARRIVAL DATE: 08FEB</pre><pr=
+e style=3D"display: block; font-family: monospace; white-space: pre; user-s=
+elect: inherit; scrollbar-color: var(--scrollbar-active-color) #0000; font-=
+size: 1em; overflow-wrap: break-word; overflow: visible; box-sizing: border=
+-box;" fr-original-style=3D"display:block;font-family:monospace;white-space=
+:pre;margin:1__qem 0;">TERMINAL:1</pre><pre style=3D"display: block; font-f=
+amily: monospace; white-space: pre; user-select: inherit; scrollbar-color: =
+var(--scrollbar-active-color) #0000; font-size: 1em; overflow-wrap: break-w=
+ord; overflow: visible; box-sizing: border-box;" fr-original-style=3D"displ=
+ay:block;font-family:monospace;white-space:pre;margin:1__qem 0;">&nbsp;</pr=
+e><pre style=3D"display: block; font-family: monospace; white-space: pre; u=
+ser-select: inherit; scrollbar-color: var(--scrollbar-active-color) #0000; =
+font-size: 1em; overflow-wrap: break-word; overflow: visible; box-sizing: b=
+order-box;" fr-original-style=3D"display:block;font-family:monospace;white-=
+space:pre;margin:1__qem 0;">&nbsp;</pre><pre style=3D"display: block; font-=
+family: monospace; white-space: pre; user-select: inherit; scrollbar-color:=
+ var(--scrollbar-active-color) #0000; font-size: 1em; overflow-wrap: break-=
+word; overflow: visible; box-sizing: border-box;" fr-original-style=3D"disp=
+lay:block;font-family:monospace;white-space:pre;margin:1__qem 0;">AT CHECK-=
+IN, PLEASE SHOW A PICTURE IDENTIFICATION AND THE DOCUMENT YOU GAVE</pre><pr=
+e style=3D"display: block; font-family: monospace; white-space: pre; user-s=
+elect: inherit; scrollbar-color: var(--scrollbar-active-color) #0000; font-=
+size: 1em; overflow-wrap: break-word; overflow: visible; box-sizing: border=
+-box;" fr-original-style=3D"display:block;font-family:monospace;white-space=
+:pre;margin:1__qem 0;">FOR REFERENCE AT RESERVATION TIME</pre><pre style=3D=
+"display: block; font-family: monospace; white-space: pre; user-select: inh=
+erit; scrollbar-color: var(--scrollbar-active-color) #0000; font-size: 1em;=
+ overflow-wrap: break-word; overflow: visible; box-sizing: border-box;" fr-=
+original-style=3D"display:block;font-family:monospace;white-space:pre;margi=
+n:1__qem 0;">&nbsp;</pre><pre style=3D"display: block; font-family: monospa=
+ce; white-space: pre; user-select: inherit; scrollbar-color: var(--scrollba=
+r-active-color) #0000; font-size: 1em; overflow-wrap: break-word; overflow:=
+ visible; box-sizing: border-box;" fr-original-style=3D"display:block;font-=
+family:monospace;white-space:pre;margin:1__qem 0;">&nbsp;</pre><pre style=
+=3D"display: block; font-family: monospace; white-space: pre; user-select: =
+inherit; scrollbar-color: var(--scrollbar-active-color) #0000; font-size: 1=
+em; overflow-wrap: break-word; overflow: visible; box-sizing: border-box;" =
+fr-original-style=3D"display:block;font-family:monospace;white-space:pre;ma=
+rgin:1__qem 0;">&nbsp;</pre><pre style=3D"display: block; font-family: mono=
+space; white-space: pre; user-select: inherit; scrollbar-color: var(--scrol=
+lbar-active-color) #0000; font-size: 1em; overflow-wrap: break-word; overfl=
+ow: visible; box-sizing: border-box;" fr-original-style=3D"display:block;fo=
+nt-family:monospace;white-space:pre;margin:1__qem 0;">&nbsp;</pre><pre styl=
+e=3D"display: block; font-family: monospace; white-space: pre; user-select:=
+ inherit; scrollbar-color: var(--scrollbar-active-color) #0000; font-size: =
+1em; overflow-wrap: break-word; overflow: visible; box-sizing: border-box;"=
+ fr-original-style=3D"display:block;font-family:monospace;white-space:pre;m=
+argin:1__qem 0;">EXCHANGE RATE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : 2.0018=
+</pre><pre style=3D"display: block; font-family: monospace; white-space: pr=
+e; user-select: inherit; scrollbar-color: var(--scrollbar-active-color) #00=
+00; font-size: 1em; overflow-wrap: break-word; overflow: visible; box-sizin=
+g: border-box;" fr-original-style=3D"display:block;font-family:monospace;wh=
+ite-space:pre;margin:1__qem 0;">PAYMENT&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : CASH</pre><pre style=3D"display: blo=
+ck; font-family: monospace; white-space: pre; user-select: inherit; scrollb=
+ar-color: var(--scrollbar-active-color) #0000; font-size: 1em; overflow-wra=
+p: break-word; overflow: visible; box-sizing: border-box;" fr-original-styl=
+e=3D"display:block;font-family:monospace;white-space:pre;margin:1__qem 0;">=
+&nbsp;</pre><pre style=3D"display: block; font-family: monospace; white-spa=
+ce: pre; user-select: inherit; scrollbar-color: var(--scrollbar-active-colo=
+r) #0000; font-size: 1em; overflow-wrap: break-word; overflow: visible; box=
+-sizing: border-box;" fr-original-style=3D"display:block;font-family:monosp=
+ace;white-space:pre;margin:1__qem 0;">FARE CALCULATION&nbsp;&nbsp;&nbsp; : =
+BAK J2 TBS21.88J2 BAK115.18NUC137.06END ROE0.86815</pre><pre style=3D"displ=
+ay: block; font-family: monospace; white-space: pre; user-select: inherit; =
+scrollbar-color: var(--scrollbar-active-color) #0000; font-size: 1em; overf=
+low-wrap: break-word; overflow: visible; box-sizing: border-box;" fr-origin=
+al-style=3D"display:block;font-family:monospace;white-space:pre;margin:1__q=
+em 0;">&nbsp;</pre><pre style=3D"display: block; font-family: monospace; wh=
+ite-space: pre; user-select: inherit; scrollbar-color: var(--scrollbar-acti=
+ve-color) #0000; font-size: 1em; overflow-wrap: break-word; overflow: visib=
+le; box-sizing: border-box;" fr-original-style=3D"display:block;font-family=
+:monospace;white-space:pre;margin:1__qem 0;">AIR FARE&nbsp;&nbsp;&nbsp;&nbs=
+p;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : EUR&nbsp;&nbsp;&nbsp;&nbsp; =
+119.00</pre><pre style=3D"display: block; font-family: monospace; white-spa=
+ce: pre; user-select: inherit; scrollbar-color: var(--scrollbar-active-colo=
+r) #0000; font-size: 1em; overflow-wrap: break-word; overflow: visible; box=
+-sizing: border-box;" fr-original-style=3D"display:block;font-family:monosp=
+ace;white-space:pre;margin:1__qem 0;">EQUIV FARE PAID&nbsp;&nbsp;&nbsp;&nbs=
+p; : AZN&nbsp;&nbsp;&nbsp;&nbsp; 238.22</pre><pre style=3D"display: block; =
+font-family: monospace; white-space: pre; user-select: inherit; scrollbar-c=
+olor: var(--scrollbar-active-color) #0000; font-size: 1em; overflow-wrap: b=
+reak-word; overflow: visible; box-sizing: border-box;" fr-original-style=3D=
+"display:block;font-family:monospace;white-space:pre;margin:1__qem 0;">TAX&=
+nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbs=
+p;&nbsp;&nbsp;&nbsp; : AZN&nbsp;&nbsp;&nbsp;&nbsp; 100.20YQ&nbsp; AZN&nbsp;=
+&nbsp;&nbsp;&nbsp; 32.20YR&nbsp;&nbsp; AZN&nbsp;&nbsp;&nbsp;&nbsp; 2.00KD</=
+pre><pre style=3D"display: block; font-family: monospace; white-space: pre;=
+ user-select: inherit; scrollbar-color: var(--scrollbar-active-color) #0000=
+; font-size: 1em; overflow-wrap: break-word; overflow: visible; box-sizing:=
+ border-box;" fr-original-style=3D"display:block;font-family:monospace;whit=
+e-space:pre;margin:1__qem 0;">TOTAL&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbs=
+p;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : AZN&nbsp;&nbsp;&nbsp;&nbsp; =
+372.62</pre><pre style=3D"display: block; font-family: monospace; white-spa=
+ce: pre; user-select: inherit; scrollbar-color: var(--scrollbar-active-colo=
+r) #0000; font-size: 1em; overflow-wrap: break-word; overflow: visible; box=
+-sizing: border-box;" fr-original-style=3D"display:block;font-family:monosp=
+ace;white-space:pre;margin:1__qem 0;">&nbsp;</pre><pre style=3D"display: bl=
+ock; font-family: monospace; white-space: pre; user-select: inherit; scroll=
+bar-color: var(--scrollbar-active-color) #0000; font-size: 1em; overflow-wr=
+ap: break-word; overflow: visible; box-sizing: border-box;" fr-original-sty=
+le=3D"display:block;font-family:monospace;white-space:pre;margin:1__qem 0;"=
+>&nbsp;</pre><pre style=3D"display: block; font-family: monospace; white-sp=
+ace: pre; user-select: inherit; scrollbar-color: var(--scrollbar-active-col=
+or) #0000; font-size: 1em; overflow-wrap: break-word; overflow: visible; bo=
+x-sizing: border-box;" fr-original-style=3D"display:block;font-family:monos=
+pace;white-space:pre;margin:1__qem 0;">&nbsp;</pre><pre style=3D"display: b=
+lock; font-family: monospace; white-space: pre; user-select: inherit; scrol=
+lbar-color: var(--scrollbar-active-color) #0000; font-size: 1em; overflow-w=
+rap: break-word; overflow: visible; box-sizing: border-box;" fr-original-st=
+yle=3D"display:block;font-family:monospace;white-space:pre;margin:1__qem 0;=
+">THE CARRIAGE OF CERTAIN HAZARDOUS MATERIALS, LIKE AEROSOLS, FIREWORKS, AN=
+D</pre><pre style=3D"display: block; font-family: monospace; white-space: p=
+re; user-select: inherit; scrollbar-color: var(--scrollbar-active-color) #0=
+000; font-size: 1em; overflow-wrap: break-word; overflow: visible; box-sizi=
+ng: border-box;" fr-original-style=3D"display:block;font-family:monospace;w=
+hite-space:pre;margin:1__qem 0;">FLAMMABLE LIQUIDS, ABOARD THE AIRCRAFT IS =
+FORBIDDEN. IF YOU DO NOT UNDERSTAND</pre><pre style=3D"display: block; font=
+-family: monospace; white-space: pre; user-select: inherit; scrollbar-color=
+: var(--scrollbar-active-color) #0000; font-size: 1em; overflow-wrap: break=
+-word; overflow: visible; box-sizing: border-box;" fr-original-style=3D"dis=
+play:block;font-family:monospace;white-space:pre;margin:1__qem 0;">THESE RE=
+STRICTIONS, FURTHER INFORMATION MAY BE OBTAINED FROM YOUR AIRLINE.</pre><pr=
+e style=3D"display: block; font-family: monospace; white-space: pre; user-s=
+elect: inherit; scrollbar-color: var(--scrollbar-active-color) #0000; font-=
+size: 1em; overflow-wrap: break-word; overflow: visible; box-sizing: border=
+-box;" fr-original-style=3D"display:block;font-family:monospace;white-space=
+:pre;margin:1__qem 0;">&nbsp;</pre><pre style=3D"display: block; font-famil=
+y: monospace; white-space: pre; user-select: inherit; scrollbar-color: var(=
+--scrollbar-active-color) #0000; font-size: 1em; overflow-wrap: break-word;=
+ overflow: visible; box-sizing: border-box;" fr-original-style=3D"display:b=
+lock;font-family:monospace;white-space:pre;margin:1__qem 0;">NOTICE</pre><p=
+re style=3D"display: block; font-family: monospace; white-space: pre; user-=
+select: inherit; scrollbar-color: var(--scrollbar-active-color) #0000; font=
+-size: 1em; overflow-wrap: break-word; overflow: visible; box-sizing: borde=
+r-box;" fr-original-style=3D"display:block;font-family:monospace;white-spac=
+e:pre;margin:1__qem 0;">CARRIAGE AND OTHER SERVICES PROVIDED BY THE CARRIER=
+ ARE SUBJECT TO CONDITIONS</pre><pre style=3D"display: block; font-family: =
+monospace; white-space: pre; user-select: inherit; scrollbar-color: var(--s=
+crollbar-active-color) #0000; font-size: 1em; overflow-wrap: break-word; ov=
+erflow: visible; box-sizing: border-box;" fr-original-style=3D"display:bloc=
+k;font-family:monospace;white-space:pre;margin:1__qem 0;">OF CARRIAGE, WHIC=
+H ARE HEREBY INCORPORATED BY REFERENCE. THESE CONDITIONS MAY</pre><pre styl=
+e=3D"display: block; font-family: monospace; white-space: pre; user-select:=
+ inherit; scrollbar-color: var(--scrollbar-active-color) #0000; font-size: =
+1em; overflow-wrap: break-word; overflow: visible; box-sizing: border-box;"=
+ fr-original-style=3D"display:block;font-family:monospace;white-space:pre;m=
+argin:1__qem 0;">BE OBTAINED FROM THE ISSUING CARRIER.</pre><pre style=3D"d=
+isplay: block; font-family: monospace; white-space: pre; user-select: inher=
+it; scrollbar-color: var(--scrollbar-active-color) #0000; font-size: 1em; o=
+verflow-wrap: break-word; overflow: visible; box-sizing: border-box;" fr-or=
+iginal-style=3D"display:block;font-family:monospace;white-space:pre;margin:=
+1__qem 0;">&nbsp;</pre><span style=3D"font-size: 10pt; font-family: &quot;C=
+ourier New&quot;; user-select: inherit; scrollbar-color: var(--scrollbar-ac=
+tive-color) #0000; box-sizing: border-box;" fr-original-style=3D"font-size:=
+10.0pt;font-family:&quot;Courier New&quot;;mso-fareast-language:EN-US;"><br=
+ style=3D"break-before: page; user-select: inherit; scrollbar-color: var(--=
+scrollbar-active-color) #0000; box-sizing: border-box;" fr-original-style=
+=3D"page-break-before:always;"></span><pre style=3D"display: block; font-fa=
+mily: monospace; white-space: pre; user-select: inherit; scrollbar-color: v=
+ar(--scrollbar-active-color) #0000; font-size: 1em; overflow-wrap: break-wo=
+rd; overflow: visible; box-sizing: border-box;" fr-original-style=3D"displa=
+y:block;font-family:monospace;white-space:pre;margin:1__qem 0;">THE ITINERA=
+RY/RECEIPT CONSTITUTES THE PASSENGER TICKET FOR THE PURPOSES OF</pre><pre s=
+tyle=3D"display: block; font-family: monospace; white-space: pre; user-sele=
+ct: inherit; scrollbar-color: var(--scrollbar-active-color) #0000; font-siz=
+e: 1em; overflow-wrap: break-word; overflow: visible; box-sizing: border-bo=
+x;" fr-original-style=3D"display:block;font-family:monospace;white-space:pr=
+e;margin:1__qem 0;"> ARTICLE 3 OF THE WARSAW CONVENTION, EXCEPT WHERE THE C=
+ARRIER DELIVERS TO THE</pre><pre style=3D"display: block; font-family: mono=
+space; white-space: pre; user-select: inherit; scrollbar-color: var(--scrol=
+lbar-active-color) #0000; font-size: 1em; overflow-wrap: break-word; overfl=
+ow: visible; box-sizing: border-box;" fr-original-style=3D"display:block;fo=
+nt-family:monospace;white-space:pre;margin:1__qem 0;">PASSENGER ANOTHER DOC=
+UMENT COMPLYING WITH THE REQUIREMENTS OF ARTICLE 3.</pre><pre style=3D"disp=
+lay: block; font-family: monospace; white-space: pre; user-select: inherit;=
+ scrollbar-color: var(--scrollbar-active-color) #0000; font-size: 1em; over=
+flow-wrap: break-word; overflow: visible; box-sizing: border-box;" fr-origi=
+nal-style=3D"display:block;font-family:monospace;white-space:pre;margin:1__=
+qem 0;">&nbsp;</pre><pre style=3D"display: block; font-family: monospace; w=
+hite-space: pre; user-select: inherit; scrollbar-color: var(--scrollbar-act=
+ive-color) #0000; font-size: 1em; overflow-wrap: break-word; overflow: visi=
+ble; box-sizing: border-box;" fr-original-style=3D"display:block;font-famil=
+y:monospace;white-space:pre;margin:1__qem 0;">PASSENGERS ON A JOURNEY INVOL=
+VING AN ULTIMATE DESTINATION OR A STOP IN A</pre><pre style=3D"display: blo=
+ck; font-family: monospace; white-space: pre; user-select: inherit; scrollb=
+ar-color: var(--scrollbar-active-color) #0000; font-size: 1em; overflow-wra=
+p: break-word; overflow: visible; box-sizing: border-box;" fr-original-styl=
+e=3D"display:block;font-family:monospace;white-space:pre;margin:1__qem 0;">=
+COUNTRY OTHER THAN THE COUNTRY OF DEPARTURE ARE ADVISED THAT INTERNATIONAL<=
+/pre><pre style=3D"display: block; font-family: monospace; white-space: pre=
+; user-select: inherit; scrollbar-color: var(--scrollbar-active-color) #000=
+0; font-size: 1em; overflow-wrap: break-word; overflow: visible; box-sizing=
+: border-box;" fr-original-style=3D"display:block;font-family:monospace;whi=
+te-space:pre;margin:1__qem 0;">TREATIES KNOWN AS THE MONTREAL CONVENTION, O=
+R ITS PREDECESSOR, THE WARSAW</pre><pre style=3D"display: block; font-famil=
+y: monospace; white-space: pre; user-select: inherit; scrollbar-color: var(=
+--scrollbar-active-color) #0000; font-size: 1em; overflow-wrap: break-word;=
+ overflow: visible; box-sizing: border-box;" fr-original-style=3D"display:b=
+lock;font-family:monospace;white-space:pre;margin:1__qem 0;">CONVENTION, IN=
+CLUDING ITS AMENDMENTS (THE WARSAW CONVENTION SYSTEM), MAY APPLY</pre><pre =
+style=3D"display: block; font-family: monospace; white-space: pre; user-sel=
+ect: inherit; scrollbar-color: var(--scrollbar-active-color) #0000; font-si=
+ze: 1em; overflow-wrap: break-word; overflow: visible; box-sizing: border-b=
+ox;" fr-original-style=3D"display:block;font-family:monospace;white-space:p=
+re;margin:1__qem 0;">TO THE ENTIRE JOURNEY, INCLUDING ANY PORTION THEREOF W=
+ITHIN A COUNTRY. FOR</pre><pre style=3D"display: block; font-family: monosp=
+ace; white-space: pre; user-select: inherit; scrollbar-color: var(--scrollb=
+ar-active-color) #0000; font-size: 1em; overflow-wrap: break-word; overflow=
+: visible; box-sizing: border-box;" fr-original-style=3D"display:block;font=
+-family:monospace;white-space:pre;margin:1__qem 0;">SUCH PASSENGERS, THE AP=
+PLICABLE TREATY, INCLUDING SPECIAL CONTRACTS OF</pre><pre style=3D"display:=
+ block; font-family: monospace; white-space: pre; user-select: inherit; scr=
+ollbar-color: var(--scrollbar-active-color) #0000; font-size: 1em; overflow=
+-wrap: break-word; overflow: visible; box-sizing: border-box;" fr-original-=
+style=3D"display:block;font-family:monospace;white-space:pre;margin:1__qem =
+0;">CARRIAGE EMBODIED IN ANY APPLICABLE TARIFFS, GOVERNS AND MAY LIMIT THE<=
+/pre><pre style=3D"display: block; font-family: monospace; white-space: pre=
+; user-select: inherit; scrollbar-color: var(--scrollbar-active-color) #000=
+0; font-size: 1em; overflow-wrap: break-word; overflow: visible; box-sizing=
+: border-box;" fr-original-style=3D"display:block;font-family:monospace;whi=
+te-space:pre;margin:1__qem 0;">LIABILITY OF THE CARRIER. THESE CONVENTIONS =
+GOVERN AND MAY LIMIT THE</pre><pre style=3D"display: block; font-family: mo=
+nospace; white-space: pre; user-select: inherit; scrollbar-color: var(--scr=
+ollbar-active-color) #0000; font-size: 1em; overflow-wrap: break-word; over=
+flow: visible; box-sizing: border-box;" fr-original-style=3D"display:block;=
+font-family:monospace;white-space:pre;margin:1__qem 0;">LIABILITYOF AIR CAR=
+RIERS FOR DEATH OR BODILY INJURY OR LOSS OF OR DAMAGE TO</pre><pre style=3D=
+"display: block; font-family: monospace; white-space: pre; user-select: inh=
+erit; scrollbar-color: var(--scrollbar-active-color) #0000; font-size: 1em;=
+ overflow-wrap: break-word; overflow: visible; box-sizing: border-box;" fr-=
+original-style=3D"display:block;font-family:monospace;white-space:pre;margi=
+n:1__qem 0;">BAGGAGE, AND FOR DELAY.</pre><pre style=3D"display: block; fon=
+t-family: monospace; white-space: pre; user-select: inherit; scrollbar-colo=
+r: var(--scrollbar-active-color) #0000; font-size: 1em; overflow-wrap: brea=
+k-word; overflow: visible; box-sizing: border-box;" fr-original-style=3D"di=
+splay:block;font-family:monospace;white-space:pre;margin:1__qem 0;">&nbsp;<=
+/pre><pre style=3D"display: block; font-family: monospace; white-space: pre=
+; user-select: inherit; scrollbar-color: var(--scrollbar-active-color) #000=
+0; font-size: 1em; overflow-wrap: break-word; overflow: visible; box-sizing=
+: border-box;" fr-original-style=3D"display:block;font-family:monospace;whi=
+te-space:pre;margin:1__qem 0;">DATA PROTECTION NOTICE: YOUR PERSONAL DATA W=
+ILL BE PROCESSED IN ACCORDANCE</pre><pre style=3D"display: block; font-fami=
+ly: monospace; white-space: pre; user-select: inherit; scrollbar-color: var=
+(--scrollbar-active-color) #0000; font-size: 1em; overflow-wrap: break-word=
+; overflow: visible; box-sizing: border-box;" fr-original-style=3D"display:=
+block;font-family:monospace;white-space:pre;margin:1__qem 0;">WITH THE APPL=
+ICABLE CARRIER'S PRIVACY POLICY AND, IF YOUR BOOKING IS MADE VIA</pre><pre =
+style=3D"display: block; font-family: monospace; white-space: pre; user-sel=
+ect: inherit; scrollbar-color: var(--scrollbar-active-color) #0000; font-si=
+ze: 1em; overflow-wrap: break-word; overflow: visible; box-sizing: border-b=
+ox;" fr-original-style=3D"display:block;font-family:monospace;white-space:p=
+re;margin:1__qem 0;">A RESERVATION SYSTEM PROVIDER ( GDS ), WITH ITS PRIVAC=
+Y POLICY. THESE ARE</pre><pre style=3D"display: block; font-family: monospa=
+ce; white-space: pre; user-select: inherit; scrollbar-color: var(--scrollba=
+r-active-color) #0000; font-size: 1em; overflow-wrap: break-word; overflow:=
+ visible; box-sizing: border-box;" fr-original-style=3D"display:block;font-=
+family:monospace;white-space:pre;margin:1__qem 0;">AVAILABLE AT <a href=3D"=
+http://www.iatatravelcenter.com/privacy" target=3D"_blank" fr-original-styl=
+e=3D"" style=3D"user-select: auto; scrollbar-color: var(--scrollbar-active-=
+color) #0000; background: rgba(0, 0, 0, 0); box-sizing: border-box; color: =
+rgb(76, 140, 246);">http://www.iatatravelcenter.com/privacy</a> OR FROM THE=
+ CARRIER OR</pre><pre style=3D"display: block; font-family: monospace; whit=
+e-space: pre; user-select: inherit; scrollbar-color: var(--scrollbar-active=
+-color) #0000; font-size: 1em; overflow-wrap: break-word; overflow: visible=
+; box-sizing: border-box;" fr-original-style=3D"display:block;font-family:m=
+onospace;white-space:pre;margin:1__qem 0;">GDS DIRECTLY. YOU SHOULD READ TH=
+IS DOCUMENTATION, WHICH APPLIES TO YOUR</pre><pre style=3D"display: block; =
+font-family: monospace; white-space: pre; user-select: inherit; scrollbar-c=
+olor: var(--scrollbar-active-color) #0000; font-size: 1em; overflow-wrap: b=
+reak-word; overflow: visible; box-sizing: border-box;" fr-original-style=3D=
+"display:block;font-family:monospace;white-space:pre;margin:1__qem 0;">BOOK=
+ING AND SPECIFIES, FOR EXAMPLE, HOW YOUR PERSONAL DATA IS COLLECTED,</pre><=
+pre style=3D"display: block; font-family: monospace; white-space: pre; user=
+-select: inherit; scrollbar-color: var(--scrollbar-active-color) #0000; fon=
+t-size: 1em; overflow-wrap: break-word; overflow: visible; box-sizing: bord=
+er-box;" fr-original-style=3D"display:block;font-family:monospace;white-spa=
+ce:pre;margin:1__qem 0;">STORED, USED, DISCLOSED AND TRANSFERRED.(APPLICABL=
+E FOR INTERLINE CARRIAGE)</pre><pre style=3D"display: block; font-family: m=
+onospace; white-space: pre; user-select: inherit; scrollbar-color: var(--sc=
+rollbar-active-color) #0000; font-size: 1em; overflow-wrap: break-word; ove=
+rflow: visible; box-sizing: border-box;" fr-original-style=3D"display:block=
+;font-family:monospace;white-space:pre;margin:1__qem 0;">&nbsp;</pre><pre s=
+tyle=3D"display: block; font-family: monospace; white-space: pre; user-sele=
+ct: inherit; scrollbar-color: var(--scrollbar-active-color) #0000; font-siz=
+e: 1em; overflow-wrap: break-word; overflow: visible; box-sizing: border-bo=
+x;" fr-original-style=3D"display:block;font-family:monospace;white-space:pr=
+e;margin:1__qem 0;">*******************************************************=
+***********************</pre></div></div></div></div></div><img class=3D"fl=
+m-open" width=3D"0" height=3D"0" style=3D"border:0;width:0;height:0;display=
+:block;" src=3D"https://gateway-east.rootserverlink.com/dc/t/mo/v2?t=3DeyJ0=
+eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJwIjoiMTAwMyA3OTk1NDUzIGF5a2hhbm5AY3JvY3=
+Vzb2Z0LmNvbSA5MDBlZWQyNzM2OGFhYTk4YzhhZWZiZTU4OWJjOWNiZCA0MjQyMTQwODU4MjgyO=
+DAzNCAxID8iLCJleHAiOjE3ODMxNjgwOTh9.l1hPMwehup-d8vriLStlG6eyVMjSRUn8Dx7Ih_K=
+uSnS5tqahf6WK4lgWlmxKhj8fHjIKfULkHoHyl0_kG4tbbg&requestId=3Di_05122805_SMR_=
+222_132_MzOR">
+------=_Part_7524647_1854963640.1767616098947--
