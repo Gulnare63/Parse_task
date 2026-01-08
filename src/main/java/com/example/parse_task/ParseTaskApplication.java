@@ -1,18 +1,12 @@
 package com.example.parse_task;
 
-import jakarta.mail.BodyPart;
-import jakarta.mail.Message;
-import jakarta.mail.MessagingException;
-import jakarta.mail.Multipart;
-import jakarta.mail.Session;
+import jakarta.mail.*;
 import jakarta.mail.internet.MimeMessage;
-
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.List;
 import java.util.Properties;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 public class ParseTaskApplication {
 
@@ -23,46 +17,40 @@ public class ParseTaskApplication {
         Session session = Session.getDefaultInstance(props);
 
         try (FileInputStream fis = new FileInputStream(emlPath)) {
-
             MimeMessage message = new MimeMessage(session, fis);
-            String body = getTextFromMessage(message);
-
-            body = body.replaceAll("&nbsp;", " ")
+            String body = getTextFromMessage(message)
+                    .replaceAll("&nbsp;", " ")
                     .replaceAll("\\s+", " ");
 
             System.out.println("Passenger: " +
-                    extractSingle("NAME\\s*:\\s*([A-Z/ ]+)", body));
-
+                    TicketExtractor.extractSingle("NAME\\s*:\\s*([A-Z/ ]+)", body));
             System.out.println("Supplier: " +
-                    extractSingle("ISSUING AIRLINE\\s*:\\s*([A-Z ]+)", body));
-
+                    TicketExtractor.extractSingle("ISSUING AIRLINE\\s*:\\s*([A-Z ]+)", body));
             System.out.println("Ticket / ETKT: " +
-                    extractSingle("ETKT\\s*((?:\\d+\\s*)+)", body));
-
+                    TicketExtractor.extractSingle("ETKT\\s*((?:\\d+\\s*)+)", body));
             System.out.println("Booking ref.: " +
-                    extractSingle("AMADEUS\\s*:\\s*(\\w+)", body));
-
+                    TicketExtractor.extractSingle("AMADEUS\\s*:\\s*(\\w+)", body));
             System.out.println("Issuance date: " +
-                    extractSingle("DATE\\s*:\\s*(\\d{2} [A-Z]{3} \\d{4})", body));
-
+                    TicketExtractor.extractSingle("DATE\\s*:\\s*(\\d{2} [A-Z]{3} \\d{4})", body));
             System.out.println("Payment: " +
-                    extractSingle("PAYMENT\\s*:\\s*(\\w+)", body));
-
+                    TicketExtractor.extractSingle("PAYMENT\\s*:\\s*(\\w+)", body));
             System.out.println("Currency: " +
-                    extractSingle("TOTAL\\s*:\\s*([A-Z]{3})", body));
-
+                    TicketExtractor.extractSingle("TOTAL\\s*:\\s*([A-Z]{3})", body));
             System.out.println("Base fare: " +
-                    extractSingle("AIR FARE\\s*:\\s*([A-Z]{3}\\s*\\d+\\.\\d+)", body));
-
-
+                    TicketExtractor.extractSingle("AIR FARE\\s*:\\s*([A-Z]{3}\\s*\\d+\\.\\d+)", body));
             System.out.println("Total amount: " +
-                    extractSingle("TOTAL\\s*:\\s*([A-Z]{3}\\s*\\d+\\.\\d+)", body));
+                    TicketExtractor.extractSingle("TOTAL\\s*:\\s*([A-Z]{3}\\s*\\d+\\.\\d+)", body));
 
-            System.out.println("Journey type: " + extractJourneyType(body));
+            System.out.println("Journey type: " + TicketExtractor.extractJourneyType(body));
+            System.out.println("Region: " + TicketExtractor.extractRegion(body));
 
-            System.out.println("Region: " + extractRegion(body));
-
-            extractFlights(body);
+            List<Flight> flights = TicketExtractor.extractFlights(body);
+            System.out.println("\nFlights:");
+            int count = 1;
+            for (Flight f : flights) {
+                System.out.println("Flight " + count + ":\n" + f);
+                count++;
+            }
 
         } catch (FileNotFoundException e) {
             System.err.println("Fayl tapılmadı: " + e.getMessage());
@@ -73,15 +61,12 @@ public class ParseTaskApplication {
         }
     }
 
-    // Email body-ni  umumi çıxartdim  (plain text / html), umumi alib sonra tek tek sozleri tapib cixaracam
     private static String getTextFromMessage(Message message)
             throws IOException, MessagingException {
 
         Object content = message.getContent();
 
-        if (content instanceof String) {
-            return (String) content;
-        }
+        if (content instanceof String) return (String) content;
 
         if (content instanceof Multipart) {
             Multipart mp = (Multipart) content;
@@ -93,50 +78,5 @@ public class ParseTaskApplication {
             }
         }
         return "";
-    }
-
-
-    private static String extractSingle(String regex, String text) {
-        Matcher m = Pattern.compile(regex).matcher(text);
-        return m.find() ? m.group(1).trim() : "TAPILMADI";
-    }
-
-
-    private static String extractJourneyType(String text) {
-        Pattern p = Pattern.compile("\\sJ2\\s+\\d+\\s");
-        Matcher m = p.matcher(text);
-
-        int count = 0;
-        while (m.find()) count++;
-
-        return count > 1 ? "Round trip" : "One way";
-    }
-
-    private static String extractRegion(String text) {
-        if (text.contains("BAKU") && text.contains("TBILISI")) {
-            return "INT";
-        }
-        return "DOM";
-    }
-
-
-    private static void extractFlights(String text) {
-        System.out.println("\nFlights:");
-
-        Pattern p = Pattern.compile(
-                "(BAKU HEYDAR ALI|TBILISI INTERNA)\\s+J2\\s+(\\d+)\\s+[A-Z]*\\s+(\\d{2}[A-Z]{3})\\s+(\\d{4})"
-        );
-
-        Matcher m = p.matcher(text);
-        int count = 1;
-
-        while (m.find()) {
-            System.out.println("Flight " + count + ":");
-            System.out.println("  From: " + m.group(1));
-            System.out.println("  Flight: J2 " + m.group(2));
-            System.out.println("  Date: " + m.group(3));
-            System.out.println("  Time: " + m.group(4));
-            count++;
-        }
     }
 }
