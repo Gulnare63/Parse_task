@@ -49,15 +49,41 @@ public class TicketParser {
         return "DOM";
     }
 
+//    public static List<Flight> extractFlights(String text) {
+//        List<Flight> flights = new ArrayList<>();
+//        Pattern p = Pattern.compile("(BAKU HEYDAR ALI|TBILISI INTERNA)\\s+J2\\s+(\\d+)\\s+[A-Z]*\\s+(\\d{2}[A-Z]{3})\\s+(\\d{4})");
+//        Matcher m = p.matcher(text);
+//        while (m.find()) {
+//            flights.add(new Flight(m.group(1), "J2 " + m.group(2), m.group(3), m.group(4)));
+//        }
+//        return flights;
+//    }
+
     public static List<Flight> extractFlights(String text) {
         List<Flight> flights = new ArrayList<>();
-        Pattern p = Pattern.compile("(BAKU HEYDAR ALI|TBILISI INTERNA)\\s+J2\\s+(\\d+)\\s+[A-Z]*\\s+(\\d{2}[A-Z]{3})\\s+(\\d{4})");
+
+        // Regex: from + flightNumber + class + date + depTime
+        Pattern p = Pattern.compile(
+                "(BAKU HEYDAR ALI|TBILISI INTERNA)\\s+J2\\s+(\\d+)\\s+[A-Z]*\\s+(\\d{2}[A-Z]{3})\\s+(\\d{4})" +
+                        ".*?((BAKU HEYDAR ALI|TBILISI INTERNA))\\s+ARRIVAL TIME", Pattern.DOTALL);
+
         Matcher m = p.matcher(text);
+
         while (m.find()) {
-            flights.add(new Flight(m.group(1), "J2 " + m.group(2), m.group(3), m.group(4)));
+            String from = m.group(1);
+            String flightNumber = "J2 " + m.group(2);
+            String date = m.group(3);
+            String time = m.group(4);
+            String to = m.group(5);
+
+            flights.add(new Flight(from, to, flightNumber, date, time));
         }
+
         return flights;
     }
+
+
+
 
     public static Ticket parseTicket(String body) {
         Ticket ticket = new Ticket();

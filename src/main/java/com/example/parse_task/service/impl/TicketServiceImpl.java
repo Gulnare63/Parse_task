@@ -47,7 +47,7 @@ public class TicketServiceImpl implements TicketService {
             dto.setRegion(ticket.getRegion());
 
             List<FlightDTO> flightDTOs = ticket.getFlights().stream()
-                    .map(f -> new FlightDTO(f.getFrom(), f.getFlightNumber(), f.getDate(), f.getTime()))
+                    .map(f -> new FlightDTO(f.getFrom(),f.getTo(), f.getFlightNumber(), f.getDate(), f.getTime()))
                     .toList();
             dto.setFlights(flightDTOs);
 

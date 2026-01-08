@@ -2,21 +2,27 @@ package com.example.parse_task.model.dto;
 
 public class FlightDTO {
     private String from;
+    private String to; // əlavə
     private String flightNumber;
     private String date;
     private String time;
 
     public FlightDTO() {}
 
-    public FlightDTO(String from, String flightNumber, String date, String time) {
+    public FlightDTO(String from, String to ,String flightNumber, String date, String time) {
         this.from = from;
+        this.to = to;
         this.flightNumber = flightNumber;
         this.date = date;
         this.time = time;
+
     }
 
     public String getFrom() { return from; }
     public void setFrom(String from) { this.from = from; }
+
+    public String getTo() { return to; }
+    public void setTo(String to) { this.to = to; }
 
     public String getFlightNumber() { return flightNumber; }
     public void setFlightNumber(String flightNumber) { this.flightNumber = flightNumber; }

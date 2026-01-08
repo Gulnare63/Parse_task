@@ -2,19 +2,25 @@ package com.example.parse_task.model;
 
 public class Flight {
     private String from;
+    private String to; // yeni əlavə
     private String flightNumber;
     private String date;
     private String time;
 
-    public Flight(String from, String flightNumber, String date, String time) {
+    public Flight(String from, String to ,String flightNumber, String date, String time) {
         this.from = from;
+        this.to = to;
         this.flightNumber = flightNumber;
         this.date = date;
         this.time = time;
+
     }
 
     public String getFrom() { return from; }
     public void setFrom(String from) { this.from = from; }
+
+    public String getTo() { return to; }
+    public void setTo(String to) { this.to = to; }
 
     public String getFlightNumber() { return flightNumber; }
     public void setFlightNumber(String flightNumber) { this.flightNumber = flightNumber; }
