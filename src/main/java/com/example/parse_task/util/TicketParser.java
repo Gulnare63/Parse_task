@@ -49,16 +49,6 @@ public class TicketParser {
         return "DOM";
     }
 
-//    public static List<Flight> extractFlights(String text) {
-//        List<Flight> flights = new ArrayList<>();
-//        Pattern p = Pattern.compile("(BAKU HEYDAR ALI|TBILISI INTERNA)\\s+J2\\s+(\\d+)\\s+[A-Z]*\\s+(\\d{2}[A-Z]{3})\\s+(\\d{4})");
-//        Matcher m = p.matcher(text);
-//        while (m.find()) {
-//            flights.add(new Flight(m.group(1), "J2 " + m.group(2), m.group(3), m.group(4)));
-//        }
-//        return flights;
-//    }
-
     public static List<Flight> extractFlights(String text) {
         List<Flight> flights = new ArrayList<>();
 
@@ -83,8 +73,6 @@ public class TicketParser {
     }
 
 
-
-
     public static Ticket parseTicket(String body) {
         Ticket ticket = new Ticket();
         ticket.setPassenger(extractSingle("NAME\\s*:\\s*([A-Z/ ]+)", body));
@@ -98,7 +86,23 @@ public class TicketParser {
         ticket.setTotalAmount(extractSingle("TOTAL\\s*:\\s*([A-Z]{3}\\s*\\d+\\.\\d+)", body));
         ticket.setJourneyType(extractJourneyType(body));
         ticket.setRegion(extractRegion(body));
+        ticket.setTaxesFeesTotal(extractTaxesFeesTotal(body));
+
         ticket.setFlights(extractFlights(body));
         return ticket;
     }
+
+    public static String extractTaxesFeesTotal(String text) {
+        Pattern p = Pattern.compile("AZN\\s*(\\d+\\.\\d+)\\s*(YQ|YR|KD)");
+        Matcher m = p.matcher(text);
+
+        double total = 0.0;
+
+        while (m.find()) {
+            total += Double.parseDouble(m.group(1));
+        }
+
+        return String.format("AZN %.2f", total);
+    }
+
 }

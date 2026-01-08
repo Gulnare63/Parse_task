@@ -26,6 +26,9 @@ dependencies {
     // REST API və @GetMapping üçün
     implementation 'org.springframework.boot:spring-boot-starter-web'
 
+    compileOnly 'org.projectlombok:lombok:1.18.30'
+    annotationProcessor 'org.projectlombok:lombok:1.18.30'
+
     // Mail parsing üçün
     implementation "com.sun.mail:jakarta.mail:2.0.1"
 

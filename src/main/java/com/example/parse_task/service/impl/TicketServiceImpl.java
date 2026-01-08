@@ -22,7 +22,6 @@ import java.util.List;
 public class TicketServiceImpl implements TicketService {
 
 
-
     @Override
     public TicketDTO getTicketFromFile(MultipartFile file) {
         try {
@@ -34,7 +33,6 @@ public class TicketServiceImpl implements TicketService {
 
             Ticket ticket = TicketParser.parseTicket(body);
 
-            // DTO-ya çevir
             TicketDTO dto = new TicketDTO();
             dto.setPassenger(ticket.getPassenger());
             dto.setSupplier(ticket.getSupplier());
@@ -47,6 +45,8 @@ public class TicketServiceImpl implements TicketService {
             dto.setTotalAmount(ticket.getTotalAmount());
             dto.setJourneyType(ticket.getJourneyType());
             dto.setRegion(ticket.getRegion());
+            dto.setTaxesFeesTotal(ticket.getTaxesFeesTotal());
+
             dto.setFlights(ticket.getFlights().stream()
                     .map(f -> new FlightDTO(f.getFrom(), f.getTo(), f.getFlightNumber(), f.getDate(), f.getTime()))
                     .toList());
@@ -83,9 +83,11 @@ public class TicketServiceImpl implements TicketService {
             dto.setTotalAmount(ticket.getTotalAmount());
             dto.setJourneyType(ticket.getJourneyType());
             dto.setRegion(ticket.getRegion());
+            dto.setTaxesFeesTotal(ticket.getTaxesFeesTotal());
+
 
             List<FlightDTO> flightDTOs = ticket.getFlights().stream()
-                    .map(f -> new FlightDTO(f.getFrom(),f.getTo(), f.getFlightNumber(), f.getDate(), f.getTime()))
+                    .map(f -> new FlightDTO(f.getFrom(), f.getTo(), f.getFlightNumber(), f.getDate(), f.getTime()))
                     .toList();
             dto.setFlights(flightDTOs);
 

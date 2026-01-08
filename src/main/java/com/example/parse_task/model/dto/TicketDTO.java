@@ -1,7 +1,12 @@
 package com.example.parse_task.model.dto;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import java.util.List;
 
+@Getter
+@Setter
 public class TicketDTO {
     private String passenger;
     private String supplier;
@@ -14,44 +19,12 @@ public class TicketDTO {
     private String totalAmount;
     private String journeyType;
     private String region;
+    private String taxesFeesTotal;
+
     private List<FlightDTO> flights;
 
-    public TicketDTO() {}
+    public TicketDTO() {
+    }
 
-    // Getters və Setters
-    public String getPassenger() { return passenger; }
-    public void setPassenger(String passenger) { this.passenger = passenger; }
 
-    public String getSupplier() { return supplier; }
-    public void setSupplier(String supplier) { this.supplier = supplier; }
-
-    public String getTicketNumber() { return ticketNumber; }
-    public void setTicketNumber(String ticketNumber) { this.ticketNumber = ticketNumber; }
-
-    public String getBookingRef() { return bookingRef; }
-    public void setBookingRef(String bookingRef) { this.bookingRef = bookingRef; }
-
-    public String getIssuanceDate() { return issuanceDate; }
-    public void setIssuanceDate(String issuanceDate) { this.issuanceDate = issuanceDate; }
-
-    public String getPayment() { return payment; }
-    public void setPayment(String payment) { this.payment = payment; }
-
-    public String getCurrency() { return currency; }
-    public void setCurrency(String currency) { this.currency = currency; }
-
-    public String getBaseFare() { return baseFare; }
-    public void setBaseFare(String baseFare) { this.baseFare = baseFare; }
-
-    public String getTotalAmount() { return totalAmount; }
-    public void setTotalAmount(String totalAmount) { this.totalAmount = totalAmount; }
-
-    public String getJourneyType() { return journeyType; }
-    public void setJourneyType(String journeyType) { this.journeyType = journeyType; }
-
-    public String getRegion() { return region; }
-    public void setRegion(String region) { this.region = region; }
-
-    public List<FlightDTO> getFlights() { return flights; }
-    public void setFlights(List<FlightDTO> flights) { this.flights = flights; }
 }
