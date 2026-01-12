@@ -24,7 +24,10 @@ public class TicketParser {
             for (int i = 0; i < mp.getCount(); i++) {
                 BodyPart part = mp.getBodyPart(i);
                 if (part.isMimeType("text/plain") || part.isMimeType("text/html")) {
-                    return (String) part.getContent();
+
+                    Object pc = part.getContent();
+                    return pc.toString();
+
                 }
             }
         }
@@ -53,9 +56,7 @@ public class TicketParser {
         List<Flight> flights = new ArrayList<>();
 
         // Regex: from + flightNumber + class + date + depTime
-        Pattern p = Pattern.compile(
-                "(BAKU HEYDAR ALI|TBILISI INTERNA)\\s+J2\\s+(\\d+)\\s+[A-Z]*\\s+(\\d{2}[A-Z]{3})\\s+(\\d{4})" +
-                        ".*?((BAKU HEYDAR ALI|TBILISI INTERNA))\\s+ARRIVAL TIME", Pattern.DOTALL);
+        Pattern p = Pattern.compile("(BAKU HEYDAR ALI|TBILISI INTERNA)\\s+J2\\s+(\\d+)\\s+[A-Z]*\\s+(\\d{2}[A-Z]{3})\\s+(\\d{4})" + ".*?((BAKU HEYDAR ALI|TBILISI INTERNA))\\s+ARRIVAL TIME", Pattern.DOTALL);
 
         Matcher m = p.matcher(text);
 

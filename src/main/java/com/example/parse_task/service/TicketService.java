@@ -7,5 +7,4 @@ import org.springframework.web.multipart.MultipartFile;
 public interface TicketService {
     TicketDTO getTicketFromFile(MultipartFile file);
 
-    TicketDTO getTicket(String emlPath);
 }

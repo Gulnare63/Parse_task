@@ -7,7 +7,7 @@ import lombok.Setter;
 @Setter
 public class FlightDTO {
     private String from;
-    private String to; // əlavə
+    private String to;
     private String flightNumber;
     private String date;
     private String time;

@@ -58,44 +58,4 @@ public class TicketServiceImpl implements TicketService {
             return null;
         }
     }
-
-    @Override
-    public TicketDTO getTicket(String emlPath) {
-        try (FileInputStream fis = new FileInputStream(emlPath)) {
-            Session session = Session.getDefaultInstance(System.getProperties());
-            MimeMessage message = new MimeMessage(session, fis);
-            String body = TicketParser.getTextFromMessage(message)
-                    .replaceAll("&nbsp;", " ")
-                    .replaceAll("\\s+", " ");
-
-            Ticket ticket = TicketParser.parseTicket(body);
-
-            // Convert to DTO
-            TicketDTO dto = new TicketDTO();
-            dto.setPassenger(ticket.getPassenger());
-            dto.setSupplier(ticket.getSupplier());
-            dto.setTicketNumber(ticket.getTicketNumber());
-            dto.setBookingRef(ticket.getBookingRef());
-            dto.setIssuanceDate(ticket.getIssuanceDate());
-            dto.setPayment(ticket.getPayment());
-            dto.setCurrency(ticket.getCurrency());
-            dto.setBaseFare(ticket.getBaseFare());
-            dto.setTotalAmount(ticket.getTotalAmount());
-            dto.setJourneyType(ticket.getJourneyType());
-            dto.setRegion(ticket.getRegion());
-            dto.setTaxesFeesTotal(ticket.getTaxesFeesTotal());
-
-
-            List<FlightDTO> flightDTOs = ticket.getFlights().stream()
-                    .map(f -> new FlightDTO(f.getFrom(), f.getTo(), f.getFlightNumber(), f.getDate(), f.getTime()))
-                    .toList();
-            dto.setFlights(flightDTOs);
-
-            return dto;
-
-        } catch (IOException | MessagingException e) {
-            e.printStackTrace();
-            return null;
-        }
-    }
 }
