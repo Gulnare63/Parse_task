@@ -1,10 +1,16 @@
 package com.example.parse_task.model.dto;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Getter
-@Setter
+@Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class FlightDTO {
     private String from;
     private String to;
@@ -12,15 +18,4 @@ public class FlightDTO {
     private String date;
     private String time;
 
-    public FlightDTO() {
-    }
-
-    public FlightDTO(String from, String to, String flightNumber, String date, String time) {
-        this.from = from;
-        this.to = to;
-        this.flightNumber = flightNumber;
-        this.date = date;
-        this.time = time;
-
-    }
 }

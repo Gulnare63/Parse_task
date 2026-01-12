@@ -10,7 +10,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 
 @RestController
-@RequestMapping("/parse")
+@RequestMapping("/v1/tickets")
 public class TicketController {
 
     private final TicketService ticketService;

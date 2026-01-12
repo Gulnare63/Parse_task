@@ -1,12 +1,18 @@
 package com.example.parse_task.model.dto;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.util.List;
 
-@Getter
-@Setter
+@Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class TicketDTO {
     private String passenger;
     private String supplier;
@@ -22,9 +28,5 @@ public class TicketDTO {
     private String taxesFeesTotal;
 
     private List<FlightDTO> flights;
-
-    public TicketDTO() {
-    }
-
 
 }
