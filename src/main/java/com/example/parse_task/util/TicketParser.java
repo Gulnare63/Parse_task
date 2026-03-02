@@ -61,10 +61,13 @@ public class TicketParser {
                         ".*?((BAKU HEYDAR ALI|TBILISI INTERNA))\\s+ARRIVAL TIME",
                 Pattern.DOTALL
         );
-
         Matcher m = p.matcher(text);
 
         while (m.find()) {
+
+
+
+//            ndsfpwdjsw
             String fromName = m.group(1);
             String flightNumber = "J2 " + m.group(2);
             String date = m.group(3);
