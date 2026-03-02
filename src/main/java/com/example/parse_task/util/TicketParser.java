@@ -11,10 +11,18 @@ import jakarta.mail.Multipart;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class TicketParser {
+
+//    private static final Map<String, String> AIRPORT_IATA = Map.of(
+//            "BAKU HEYDAR ALI", "GYD",
+//            "TBILISI INTERNA", "TBS",
+//            "ISTANBUL AIRPORT", "IST"
+//            // lazım olarsa əlavə et
+//    );
 
     public static String getTextFromMessage(Message message) throws IOException, MessagingException {
         Object content = message.getContent();
@@ -24,10 +32,8 @@ public class TicketParser {
             for (int i = 0; i < mp.getCount(); i++) {
                 BodyPart part = mp.getBodyPart(i);
                 if (part.isMimeType("text/plain") || part.isMimeType("text/html")) {
-
                     Object pc = part.getContent();
                     return pc.toString();
-
                 }
             }
         }
@@ -47,35 +53,54 @@ public class TicketParser {
         return count > 1 ? "Round trip" : "One way";
     }
 
-    public static String extractRegion(String text) {
-        if (text.contains("BAKU") && text.contains("TBILISI")) return "INT";
-        return "DOM";
-    }
-
     public static List<Flight> extractFlights(String text) {
         List<Flight> flights = new ArrayList<>();
 
-        // Regex: from + flightNumber + class + date + depTime
-        Pattern p = Pattern.compile("(BAKU HEYDAR ALI|TBILISI INTERNA)\\s+J2\\s+(\\d+)\\s+[A-Z]*\\s+(\\d{2}[A-Z]{3})\\s+(\\d{4})" + ".*?((BAKU HEYDAR ALI|TBILISI INTERNA))\\s+ARRIVAL TIME", Pattern.DOTALL);
+        Pattern p = Pattern.compile(
+                "(BAKU HEYDAR ALI|TBILISI INTERNA)\\s+J2\\s+(\\d+)\\s+[A-Z]*\\s+(\\d{2}[A-Z]{3})\\s+(\\d{4})" +
+                        ".*?((BAKU HEYDAR ALI|TBILISI INTERNA))\\s+ARRIVAL TIME",
+                Pattern.DOTALL
+        );
 
         Matcher m = p.matcher(text);
 
         while (m.find()) {
-            String from = m.group(1);
+            String fromName = m.group(1);
             String flightNumber = "J2 " + m.group(2);
             String date = m.group(3);
             String time = m.group(4);
-            String to = m.group(5);
+            String toName = m.group(5);
 
-            flights.add(new Flight(from, to, flightNumber, date, time));
+            // Burada artıq IATA kodunu götürmürük, tam adını veririk
+            flights.add(new Flight(fromName, toName, flightNumber, date, time));
         }
 
         return flights;
     }
 
 
+    public static String extractRegion(List<Flight> flights) {
+        for (Flight f : flights) {
+            if (!getCountryCode(f.getFrom()).equals(getCountryCode(f.getTo()))) {
+                return "INT"; // beynəlxalq
+            }
+        }
+        return "DOM"; // bütün uçuşlar eyni ölkədədirsə
+    }
+
+    private static String getCountryCode(String airport) {
+        return switch (airport) {
+            case "GYD", "BAKU HEYDAR ALI" -> "AZ";
+            case "TBS", "TBILISI INTERNA" -> "GE";
+            case "IST", "ISTANBUL AIRPORT" -> "TR";
+            default -> "UNKNOWN";
+        };
+    }
+
+
     public static Ticket parseTicket(String body) {
         Ticket ticket = new Ticket();
+
         ticket.setPassenger(extractSingle("NAME\\s*:\\s*([A-Z/ ]+)", body));
         ticket.setSupplier(extractSingle("ISSUING AIRLINE\\s*:\\s*([A-Z ]+)", body));
         ticket.setTicketNumber(extractSingle("ETKT\\s*((?:\\d+\\s*)+)", body));
@@ -86,10 +111,14 @@ public class TicketParser {
         ticket.setBaseFare(extractSingle("AIR FARE\\s*:\\s*([A-Z]{3}\\s*\\d+\\.\\d+)", body));
         ticket.setTotalAmount(extractSingle("TOTAL\\s*:\\s*([A-Z]{3}\\s*\\d+\\.\\d+)", body));
         ticket.setJourneyType(extractJourneyType(body));
-        ticket.setRegion(extractRegion(body));
+
+        // Flight-ları çıxar və region-u təyin et
+        List<Flight> flights = extractFlights(body);
+        ticket.setFlights(flights);
+        ticket.setRegion(extractRegion(flights));
+
         ticket.setTaxesFeesTotal(extractTaxesFeesTotal(body));
 
-        ticket.setFlights(extractFlights(body));
         return ticket;
     }
 

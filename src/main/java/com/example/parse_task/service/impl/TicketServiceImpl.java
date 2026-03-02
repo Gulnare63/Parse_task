@@ -33,16 +33,16 @@ public class TicketServiceImpl implements TicketService {
         }
     }
 
+    /* ================= PRIVATE METHODS ================= */
+
     private MimeMessage createMessage(MultipartFile file)
             throws MessagingException, IOException {
-
         Session session = Session.getDefaultInstance(new Properties());
         return new MimeMessage(session, file.getInputStream());
     }
 
     private String extractBody(MimeMessage message)
             throws MessagingException, IOException {
-
         return TicketParser.getTextFromMessage(message)
                 .replaceAll("&nbsp;", " ")
                 .replaceAll("\\s+", " ")
@@ -50,7 +50,6 @@ public class TicketServiceImpl implements TicketService {
     }
 
     private TicketDTO mapToDTO(Ticket ticket) {
-
         TicketDTO dto = new TicketDTO();
 
         dto.setPassenger(ticket.getPassenger());
@@ -66,6 +65,7 @@ public class TicketServiceImpl implements TicketService {
         dto.setRegion(ticket.getRegion());
         dto.setTaxesFeesTotal(ticket.getTaxesFeesTotal());
 
+        // Flight-ları DTO-ya çevirmək
         dto.setFlights(ticket.getFlights().stream()
                 .map(this::mapFlightToDTO)
                 .toList());
